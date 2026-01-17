@@ -5,3 +5,11 @@ th, td {
 * {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+th {
+    background-color: yellow;
+}
+
+table, th, tr {
+    border: 2px solid black;
+}

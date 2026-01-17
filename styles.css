@@ -1,0 +1,223 @@
+/* =========================
+   POSTER LOOK (WALL READY)
+   ========================= */
+
+:root{
+  --bg: #f2f4f7;
+  --ink: #0f172a;
+  --muted: #475569;
+  --card: #ffffff;
+  --line: #e2e8f0;
+
+  --accent: #2563eb;     /* blue */
+  --accent2: #f59e0b;    /* amber */
+  --shadow: 0 18px 40px rgba(2, 6, 23, .12);
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+  background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 45%, #e9eef5 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 18px;
+  color: var(--ink);
+}
+
+/* Poster wrapper */
+.poster{
+  width: min(920px, 100%);
+  background: var(--card);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+/* Header band */
+.poster-header{
+  padding: 34px 38px 26px;
+  background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(245,158,11,.10));
+  border-bottom: 1px solid var(--line);
+}
+
+.poster-header h1{
+  font-size: 54px;
+  line-height: 1.05;
+  letter-spacing: .5px;
+  text-align: center;
+}
+
+.poster-header .subtitle{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.meta-row{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip{
+  border: 1px solid rgba(15, 23, 42, .12);
+  background: rgba(255,255,255,.7);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Content area */
+.poster-body{
+  padding: 28px 34px 30px;
+}
+
+/* Table card feel */
+.table-wrap{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Table */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 22px;
+}
+
+/* Header */
+thead th{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+  padding: 18px 18px;
+  background: #0f172a;
+  color: #fff;
+}
+
+/* Cells */
+tbody td{
+  padding: 18px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Stripe */
+tbody tr:nth-child(even){
+  background: #f8fafc;
+}
+
+/* Hover (nice on screen, harmless in print) */
+tbody tr:hover{
+  background: rgba(37,99,235,.06);
+}
+
+/* Name column */
+tbody td:first-child{
+  font-weight: 650;
+}
+
+/* Preference column -> pill badges */
+tbody td:last-child{
+  text-align: right;
+  font-weight: 700;
+}
+
+/* Make preference look like badges without changing HTML */
+tbody td:last-child{
+  padding-right: 22px;
+}
+
+tbody td:last-child::before{
+  content: "";
+  display: inline-block;
+  width: 0;
+}
+
+tbody td:last-child{
+  position: relative;
+}
+
+tbody td:last-child{
+  color: transparent; /* hide raw text, replace with badge */
+}
+
+tbody td:last-child::after{
+  content: attr(data-pref);
+  color: var(--ink);
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 800;
+  border: 1px solid rgba(15, 23, 42, .14);
+  background: #fff;
+}
+
+/* Badge colours (based on text) */
+tbody td:last-child[data-pref="AM"]::after{
+  background: rgba(34,197,94,.14);
+  border-color: rgba(34,197,94,.25);
+}
+
+tbody td:last-child[data-pref="PM"]::after{
+  background: rgba(59,130,246,.14);
+  border-color: rgba(59,130,246,.25);
+}
+
+tbody td:last-child[data-pref="Any"]::after{
+  background: rgba(245,158,11,.16);
+  border-color: rgba(245,158,11,.30);
+}
+
+tbody td:last-child[data-pref^="Any"]::after{
+  background: rgba(245,158,11,.16);
+  border-color: rgba(245,158,11,.30);
+}
+
+/* Footer */
+.poster-footer{
+  padding: 18px 34px 26px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.poster-footer strong{
+  color: var(--ink);
+}
+
+/* Print friendly */
+@media print{
+  body{
+    background: #fff !important;
+    padding: 0;
+  }
+  .poster{
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+  }
+  .poster-header{
+    background: #fff;
+  }
+  thead th{
+    background: #000;
+  }
+}

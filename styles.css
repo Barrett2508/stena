@@ -12,8 +12,5 @@ th {
 
 table, th, tr {
     border: 2px solid black !important;
-}
-
-table {
     border-radius: 15px;
 }

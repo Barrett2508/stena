@@ -10,6 +10,6 @@ th {
     background-color: yellow !important;
 }
 
-table, th, td {
+table, th, tr {
     border: 2px solid black !important;
 }
